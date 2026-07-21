@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Churn EDA</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Customer churn EDA</h1>
+      <p class="subtitle">Exploratory analysis of customer retention data — identifying primary churn risk factors</p>
+    </header>
+
+    <section class="upload-row">
+      <label class="file-label">
+        Upload a different CSV (optional)
+        <input type="file" id="csvUpload" accept=".csv">
+      </label>
+      <span id="status">Loading achive.csv…</span>
+    </section>
+
+    <section class="kpi-grid" id="kpiGrid"></section>
+
+    <section class="chart-block">
+      <h2>Churn rate by segment</h2>
+      <div class="control-row">
+        <label for="segmentSelect">Feature</label>
+        <select id="segmentSelect"></select>
+      </div>
+      <div class="chart-wrap"><canvas id="segmentChart"></canvas></div>
+    </section>
+
+    <section class="chart-block">
+      <h2>Churn rate by tenure bucket</h2>
+      <div class="chart-wrap"><canvas id="tenureChart"></canvas></div>
+    </section>
+
+    <section class="table-block">
+      <h2>Top churn risk factors</h2>
+      <p class="hint">Ranked by lift over baseline churn rate. Only groups with at least 30 customers shown.</p>
+      <div class="table-scroll">
+        <table id="riskTable">
+          <thead>
+            <tr><th>Feature</th><th>Category</th><th>Churn rate</th><th>N</th><th>Lift</th><th>Relative risk</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
